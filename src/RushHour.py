@@ -1,3 +1,6 @@
+import copy
+from math import ceil
+
 class Vehicle:
     def __init__(self, label, orientation, length, x, y):
         self.label = label
@@ -15,10 +18,15 @@ class Vehicle:
             elif self.orientation == "h":  
                 position.append((self.x + i, self.y))
         return position
-
+   
+    
+class Dimension():
+    def init():
+        global grid_size
 
 class RushHour:
-    def __init__(self, grid_size, vehicles):
+    def __init__(self, vehicles):
+       
         self.grid_size = grid_size
         self.vehicles = vehicles  
         self.grid = [[None] * grid_size for _ in range(grid_size)]  
@@ -28,7 +36,7 @@ class RushHour:
         """Places vehicles on the grid and checks for overlaps."""
         for vehicle in self.vehicles:
             for x, y in vehicle.Position_vehicle():
-               
+                
                 if x < 1 or y < 1 or x > self.grid_size or y > self.grid_size:
                     raise ValueError(f"Vehicle {vehicle.label} goes out of grid bounds at ({x}, {y}).")
                
@@ -36,7 +44,10 @@ class RushHour:
                     raise ValueError(f"Invalid input: Overlapping vehicles at ({x}, {y}).")
               
                 self.grid[y - 1][x - 1] = vehicle.label
-
+        for i in range(self.grid_size):
+            for j in range(self.grid_size):
+                if self.grid[i][j] == None:
+                    self.grid[i][j] = "."
     def display_grid(self):
         """Displays the current state of the Rush Hour game."""
         print("   " + " ".join(f"{i+1:>2}" for i in range(self.grid_size))) 
@@ -52,45 +63,4 @@ class RushHour:
         for vehicle in self.vehicles:
             print(f"Vehicle {vehicle.label}: Orientation={vehicle.orientation.upper()}, "
                   f"Length={vehicle.length}, Position=({vehicle.x}, {vehicle.y})")
-      
-    @classmethod
-    def check_file(self,file_path):
-        """Reads the file, validates, and initializes a RushHour game."""
-        with open(file_path, "r") as file:
-            lines = file.readlines()
-
-        self.grid_size = int(lines[0].strip())
-        self.num_vehicles = int(lines[1].strip())
-        self.vehicles = []
-        
-        if len(lines) != 2 + self.num_vehicles:
-            raise ValueError(
-                f"Mismatch in the number of vehicles: File indicates {num_vehicles}, "
-                f"but {len(lines) - 2} vehicle descriptions are provided."
-            )
-
-        for i in range(self.num_vehicles):
-            vehicle = lines[i + 2].strip().split()
-            label = int(vehicle[0])
-            orientation = vehicle[1]
-            length = int(vehicle[2])
-            x_cor = int(vehicle[3])
-            y_cor = int(vehicle[4])
-            
-            if orientation not in ('h', 'v'):
-                raise ValueError(f"Invalid vehicle orientation '{orientation}' for vehicle {label}.")
-            if length not in (2, 3):
-                raise ValueError(f"Invalid vehicle length '{length}' for vehicle {label}.")
-        
-            if x_cor < 1 or y_cor < 1 or x_cor > self.grid_size or y_cor > self.grid_size:
-                raise ValueError(f"Vehicle {label} starts outside the grid.")
-            if orientation == 'h' and x_cor + length - 1 > self.grid_size:
-                raise ValueError(f"Horizontal vehicle {label} exceeds grid boundaries.")
-            if orientation == 'v' and y_cor + length - 1 > self.grid_size:
-                raise ValueError(f"Vertical vehicle {label} exceeds grid boundaries.")
-
-            self.vehicles.append(Vehicle(label, orientation, length, x_cor, y_cor))
-
-        return RushHour(self.grid_size, self.vehicles)
-
-
+   
