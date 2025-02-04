@@ -37,3 +37,29 @@ def Brute_Force(rush_hour_game, possible_states):
     
     return {"solvetime": time.time() - start_time, "steps": steps, "message": "No solution found"}
 
+
+def DFS(rush_hour_game):
+    
+    Stack = []
+    memo = {}
+    memo[rush_hour_game] = 0
+    #visited 
+    Stack.append(rush_hour_game)
+    count = 0
+    while len(Stack) != 0:
+        count += 1
+        state = Stack.pop()
+        
+        if state.check_winning():
+            print("Has solution")
+        
+        else:
+            for possible_move in state.check_possible_move():
+                new_state = RushHour(state.grid_size,possible_move)
+                if new_state in memo:
+                    pass
+                else:
+                    memo[new_state] = state
+                    Stack.append(new_state)
+        
+    return False

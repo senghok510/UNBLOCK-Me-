@@ -63,32 +63,8 @@ class RushHour:
         for vehicle in self.vehicles:
             x_pos = vehicle.x - 1  
             y_pos = vehicle.y - 1  # Convert to 0-based index
-
-            # Move horizontal vehicle
-            if vehicle.orientation == 'h':
-                # Can move left
-                if x_pos > 0 and self.grid[y_pos][x_pos - 1] == ".":
-                    updated_vehicles = copy.deepcopy(self.vehicles)
-                    moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x - 1, vehicle.y)
-                   
-                    for i, v in enumerate(updated_vehicles):
-                        if v.label == vehicle.label:
-                            updated_vehicles[i] = moved_vehicle
-                            break
-                    possible_moves.add(frozenset(updated_vehicles)) 
-                # Can move right
-                if (x_pos + vehicle.length) < self.grid_size and self.grid[y_pos][x_pos + vehicle.length] == ".":
-                    updated_vehicles = copy.deepcopy(self.vehicles)
-                    moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x + 1, vehicle.y)
-                   
-                    for i, v in enumerate(updated_vehicles):
-                        if v.label == vehicle.label:
-                            updated_vehicles[i] = moved_vehicle
-                            break
-                    possible_moves.add(frozenset(updated_vehicles))  # Use frozenset to ensure hashability
-
-            # Move vertical vehicle
-            elif vehicle.orientation == 'v':
+               # Move vertical vehicle
+            if vehicle.orientation == 'v':
                 # Can move up
                 if y_pos > 0 and self.grid[y_pos - 1][x_pos] == ".":
                     updated_vehicles = copy.deepcopy(self.vehicles)
@@ -110,6 +86,32 @@ class RushHour:
                             updated_vehicles[i] = moved_vehicle
                             break
                     possible_moves.add(frozenset(updated_vehicles)) 
+
+
+            # Move horizontal vehicle
+            elif vehicle.orientation == 'h':
+                # Can move left
+                if x_pos > 0 and self.grid[y_pos][x_pos - 1] == ".":
+                    updated_vehicles = copy.deepcopy(self.vehicles)
+                    moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x - 1, vehicle.y)
+                   
+                    for i, v in enumerate(updated_vehicles):
+                        if v.label == vehicle.label:
+                            updated_vehicles[i] = moved_vehicle
+                            break
+                    possible_moves.add(frozenset(updated_vehicles)) 
+                # Can move right
+                if (x_pos + vehicle.length) < self.grid_size and self.grid[y_pos][x_pos + vehicle.length] == ".":
+                    updated_vehicles = copy.deepcopy(self.vehicles)
+                    moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x + 1, vehicle.y)
+                   
+                    for i, v in enumerate(updated_vehicles):
+                        if v.label == vehicle.label:
+                            updated_vehicles[i] = moved_vehicle
+                            break
+                    possible_moves.add(frozenset(updated_vehicles))  # Use frozenset to ensure hashability
+
+         
 
         return possible_moves
 
