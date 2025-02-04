@@ -20,9 +20,6 @@ class Vehicle:
         return position
    
     
-# class Dimension():
-#     def __init__(self):
-#         global grid_size
 
 class RushHour:
     
@@ -64,7 +61,7 @@ class RushHour:
         possible_moves = set()  # Set to store unique possible states
 
         for vehicle in self.vehicles:
-            x_pos = vehicle.x - 1  # Convert to 0-based index
+            x_pos = vehicle.x - 1  
             y_pos = vehicle.y - 1  # Convert to 0-based index
 
             # Move horizontal vehicle
@@ -73,7 +70,7 @@ class RushHour:
                 if x_pos > 0 and self.grid[y_pos][x_pos - 1] == ".":
                     updated_vehicles = copy.deepcopy(self.vehicles)
                     moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x - 1, vehicle.y)
-                    # Update the vehicle's position
+                   
                     for i, v in enumerate(updated_vehicles):
                         if v.label == vehicle.label:
                             updated_vehicles[i] = moved_vehicle
@@ -83,7 +80,7 @@ class RushHour:
                 if (x_pos + vehicle.length) < self.grid_size and self.grid[y_pos][x_pos + vehicle.length] == ".":
                     updated_vehicles = copy.deepcopy(self.vehicles)
                     moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x + 1, vehicle.y)
-                    # Update the vehicle's position
+                   
                     for i, v in enumerate(updated_vehicles):
                         if v.label == vehicle.label:
                             updated_vehicles[i] = moved_vehicle
@@ -96,42 +93,41 @@ class RushHour:
                 if y_pos > 0 and self.grid[y_pos - 1][x_pos] == ".":
                     updated_vehicles = copy.deepcopy(self.vehicles)
                     moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x, vehicle.y - 1)
-                    # Update the vehicle's position
+                   
                     for i, v in enumerate(updated_vehicles):
                         if v.label == vehicle.label:
                             updated_vehicles[i] = moved_vehicle
                             break
-                    possible_moves.add(frozenset(updated_vehicles))  # Use frozenset to ensure hashability
+                    possible_moves.add(frozenset(updated_vehicles)) 
 
                 # Can move down
                 if (y_pos + vehicle.length) < self.grid_size and self.grid[y_pos + vehicle.length][x_pos] == ".":
                     updated_vehicles = copy.deepcopy(self.vehicles)
                     moved_vehicle = Vehicle(vehicle.label, vehicle.orientation, vehicle.length, vehicle.x, vehicle.y + 1)
-                    # Update the vehicle's position
+                 
                     for i, v in enumerate(updated_vehicles):
                         if v.label == vehicle.label:
                             updated_vehicles[i] = moved_vehicle
                             break
-                    possible_moves.add(frozenset(updated_vehicles))  # Use frozenset to ensure hashability
+                    possible_moves.add(frozenset(updated_vehicles)) 
 
         return possible_moves
 
     
     def check_winning(self):
         """Checks if the red car has reached the winning position."""
-        # Iterate through all vehicles to find the red car
+        
         for vehicle in self.vehicles:
-            # Assuming the red car is labeled "#"
+          
             if vehicle.label == 1:
                 # The target position for the red car (usually at grid_size-2, grid_size // 2)
                 target_x = self.grid_size - 2
                 target_y = self.grid_size // 2
                 
-                # Check if the red car is at the target position and is horizontal (orientation 'h')
                 if vehicle.orientation == "h" and vehicle.x == target_x and vehicle.y == target_y:
-                    return True  # Red car has reached the target position
+                    return True  
                 
-        return False  # Red car has not reached the target position yet
+        return False  
 
 
     def __hash__(self):

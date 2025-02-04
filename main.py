@@ -10,6 +10,31 @@ rush_hour_game = RushHour(check.grid_size, check.vehicles)
 possible_state = rush_hour_game.check_possible_move()
 
 
-state = possible_state.pop()
-# result = Al.Brute_Force(rush_hour_game, possible_state)
-print(type(state))
+state1 = possible_state.pop()
+print(check.display_grid())
+if isinstance(state1, frozenset):
+    # Unfreeze the frozenset by converting it to a regular set
+    mutable_state = set(state1)
+
+
+    vehicles = list(mutable_state)  
+    new_rush_hour_game = RushHour(rush_hour_game.grid_size, vehicles)
+
+
+    print(new_rush_hour_game.display_grid())
+else:
+    print("State is not a frozenset.")
+
+state2 = possible_state.pop()
+if isinstance(state2, frozenset):
+    # Unfreeze the frozenset by converting it to a regular set
+    mutable_state = set(state2)
+
+    vehicles = list(mutable_state) 
+    new_rush_hour_game = RushHour(rush_hour_game.grid_size, vehicles)
+
+
+    print(new_rush_hour_game.display_grid())
+else:
+    print("State is not a frozenset.")
+
