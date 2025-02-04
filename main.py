@@ -1,10 +1,15 @@
-from src.RushHour import RushHour
 from src.Check import Check
+import src.Algorithmes as Al
+from src.RushHour import RushHour
+
+check = Check.check_file("./data/GameP03.txt")
 
 
+rush_hour_game = RushHour(check.grid_size, check.vehicles)
+
+possible_state = rush_hour_game.check_possible_move()
 
 
-check = Check.check_file("./data/GameP01.txt")
-
-# # RushHour.display_grid()
-# check.display_grid()
+state = possible_state.pop()
+# result = Al.Brute_Force(rush_hour_game, possible_state)
+print(type(state))

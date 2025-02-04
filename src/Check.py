@@ -1,5 +1,5 @@
 from src.RushHour import RushHour, Vehicle
-
+import copy
 
 
 
@@ -11,6 +11,7 @@ class Check(RushHour):
          super(Check).__init__(vehicles)
          
     @classmethod
+    # Question 1: method that check file 
     def check_file(self,file_path):
        
         """Reads the file, validates, and initializes a RushHour game."""
@@ -49,89 +50,7 @@ class Check(RushHour):
 
             self.vehicles.append(Vehicle(label, orientation, length, x_cor, y_cor))
 
-        return RushHour(self.vehicles)
-
-        
-    def checkformoves(self):
-        # initialize list for possible boards
-        states = []
-
-        for vehicle in self.vehicles:
-            x_position = int(vehicle.x)
-            y_position = int(vehicle.y)
-
-            # check if vehicle is oriented horizontal and if it's not on the edge of the board
-            if vehicle.orientation == 'h':
-                if x_position != 0:
-
-                    # move to the left if not blocked by another vehicle
-                    if self.board[y_position][x_position - 1] == '.':
-                        newVehicles = self.vehicles.copy()
-                        newVehicle = Vehicle(vehicle.id, x_position - 1, y_position, vehicle.orientation, vehicle.length)
-
-                        # remove old vehicle and append moved vehicle to list
-                        newVehicles.remove(vehicle)
-                        newVehicles.append(newVehicle)
-
-                        # add new list of vehicles to list of possible boards
-                        states.append(newVehicles)
-
-                if (x_position + vehicle.length - 1) != self.width - 1:
-
-                    # move to the right if not blocked by another vehicle
-                    if self.board[y_position][x_position + (vehicle.length)] == '.':
-                        newVehicles = self.vehicles.copy()
-                        newVehicle = Vehicle(vehicle.id, x_position + 1, y_position, vehicle.orientation, vehicle.length)
-
-                        # remove old vehicle and append moved vehicle to list
-                        newVehicles.remove(vehicle)
-                        newVehicles.append(newVehicle)
-
-                        # add new list of vehicles to list of possible boards
-                        states.append(newVehicles)
-
-            # check if vehicle is oriented vertical and if it's not on the edge of the board
-            if vehicle.orientation == 'v':
-                if y_position != 0:
-
-                    # move up if not blocked by another vehicle
-                    if self.board[y_position - 1][x_position] == '.':
-                        newVehicles = self.vehicles.copy()
-                        newVehicle = Vehicle(vehicle.id, x_position, y_position - 1, vehicle.orientation, vehicle.length)
-
-                        # remove old vehicle and append moved vehicle to list
-                        newVehicles.remove(vehicle)
-                        newVehicles.append(newVehicle)
-
-                        # add new list of vehicles to list of possible boards
-                        states.append(newVehicles)
-
-                if y_position + (vehicle.length - 1) != self.height - 1:
-
-                    # move down if not blocked by another vehicle
-                    if self.board[y_position + vehicle.length][x_position] == '.':
-                        newVehicles = self.vehicles.copy()
-                        newVehicle = Vehicle(vehicle.id, x_position, y_position + 1, vehicle.orientation, vehicle.length)
-
-                        # remove old vehicle and append moved vehicle to list
-                        newVehicles.remove(vehicle)
-                        newVehicles.append(newVehicle)
-
-                        # add new list of vehicles to list of possible boards
-                        states.append(newVehicles)
-
-        return states
-
-
-    #      # check if the red car is at the winning position
-    # def hasSolved(self):
-        
-    #     if 
-        
-        
-        
-        
-        
-
-
-    #     return False
+        return RushHour(self.grid_size,self.vehicles)
+    
+    
+   
