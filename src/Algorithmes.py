@@ -63,3 +63,19 @@ def DFS(rush_hour_game):
                     Stack.append(new_state)
         
     return False
+
+def DFS(rush_hour_game):
+
+    Stack = []
+    visited = []
+    step = 0 #steps to get to the solution
+    Stack.append(rush_hour_game)
+    while len(Stack) != 0:
+        step += 1
+        state = Stack.pop()
+        if state in visited:
+            pass
+        visited.append(state)
+        for possible in state.check_possible_move():
+            new_state = RushHour(state.grid_size, possible)
+    

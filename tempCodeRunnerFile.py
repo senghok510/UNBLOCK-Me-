@@ -1,16 +1,11 @@
-from src.Check import Check
-import src.Algorithmes as Al
-from src.RushHour import RushHour
 
-check = Check.check_file("./data/GameP03.txt")
+def count_set_bits(n: int) -> int:
+    count = 0
+    while n:
+        count += n & 1  # Increment count if the least significant bit is 1
+        n >>= 1  # Right shift the number by 1 to check the next bit
+    return count
 
-
-rush_hour_game = RushHour(check.grid_size, check.vehicles)
-
-possible_state = rush_hour_game.check_possible_move()
-
-
-
-result = Al.Brute_Force(rush_hour_game, possible_state)
-
-# print(check.vehicles)
+# Example
+n = 7  # Binary representation: 101
+print(count_set_bits(n))  # Output: 2
