@@ -1,66 +1,129 @@
-
 import random
 import time
 from src.RushHour import RushHour
-import time
-import random
-# Question 3
+from collections import deque
 
-def Brute_Force(rush_hour_game, possible_states):
+
+def brute_force(rush_hour_game, max_iterations=100000):
+    """
+    Performs a random walk (brute force) to try to solve the RushHour game.
+    Note: This is not a systematic search and may not find a solution.
+    
+    Parameters:
+        rush_hour_game (RushHour): The initial game state.
+        max_iterations (int): Maximum number of iterations to attempt.
+    
+    Returns:
+        dict
+    """
     start_time = time.time()
-    current_game = rush_hour_game
-    steps = 0
-    explored_states = set()  
+    current_state = rush_hour_game
+    explored_states = set()
+    path = [current_state]
+    iterations = 0
 
-    while True:
+    while iterations < max_iterations:
+        iterations += 1
+        state_key = tuple(current_state.vehicles)
+        if state_key in explored_states:
+           
+            break
+        explored_states.add(state_key)
 
-        possible_moves = possible_states  
-        
+        if current_state.check_winning():
+            return {
+                "solution": path,
+                "solvetime": time.time() - start_time,
+                "iterations": iterations
+            }
+
+        possible_moves = current_state.check_possible_move()
         if not possible_moves:
-            break  
+            break
 
+       
+        move = random.choice(list(possible_moves))
+        new_state = RushHour(current_state.grid_size, list(move))
+        path.append(new_state)
+        current_state = new_state
+
+    return {
+        "message": "No solution found",
+        "iterations": iterations,
+        "solvetime": time.time() - start_time
+    }
+
+
+
+
+def dfs(rush_hour_game, max_iterations=100000, debug=False, print_solution=True):
+    """
+    Performs a Depth-First Search (DFS) to solve the RushHour game.
+    """
+    start_time = time.time()
+    initial_key = tuple(rush_hour_game.vehicles)
+
+    stack = [rush_hour_game]
+
+    predecessors = {initial_key: None}
+   
+    state_instances = {initial_key: rush_hour_game}
     
-        random_move = random.choice(list(possible_moves))  # Convert to list to pick a random move
+    iterations = 0
 
-        if random_move in explored_states:
-            continue 
+    while stack:
+        current_state = stack.pop()
+        iterations += 1
+        current_key = tuple(current_state.vehicles)
 
- 
-        explored_states.add(random_move)
+        if debug:
+            print(f"Iteration {iterations}: Stack size = {len(stack)}, Visited states = {len(predecessors)}")
 
-    
-        new_game = RushHour(current_game.grid_size, list(random_move))  # Convert frozenset back to list for the game
-        steps += 1
+        if current_state.check_winning():
+         
+            solution_path = []
+            key = current_key
+            while key is not None:
+                solution_path.append(state_instances[key])
+                key = predecessors[key]
+            solution_path.reverse()
+            elapsed_time = time.time() - start_time
+            print(f"\nSolution found in {iterations} iterations, execution time: {elapsed_time:.4f} seconds")
+            
+            if print_solution:
+                print("\n--- Solution Path ---")
+                for step, state in enumerate(solution_path):
+                    print(f"\nStep {step}:")
+                    state.display_grid()
+            
+            return {
+                "solution": solution_path,
+                "iterations": iterations,
+                "solvetime": elapsed_time
+            }
 
-        if new_game.check_winning():
-            return {"solvetime": time.time() - start_time, "steps": steps}
-    
-    return {"solvetime": time.time() - start_time, "steps": steps, "message": "No solution found"}
+        if iterations > max_iterations:
+            elapsed_time = time.time() - start_time
+            print(f"Max iterations reached ({iterations}). Execution time: {elapsed_time:.4f} seconds")
+            return {
+                "message": "Max iterations reached. No solution found.",
+                "iterations": iterations,
+                "solvetime": elapsed_time
+            }
 
+   
+        for move in current_state.get_possible_moves():
+            new_state = RushHour(current_state.grid_size, list(move))
+            new_key = tuple(new_state.vehicles)
+            if new_key not in predecessors:
+                predecessors[new_key] = current_key  
+                state_instances[new_key] = new_state
+                stack.append(new_state)
 
-def DFS(rush_hour_game):
-    
-    Stack = []
-    memo = {}
-    memo[rush_hour_game] = 0
-    #visited 
-    Stack.append(rush_hour_game)
-    count = 0
-    while len(Stack) != 0:
-        count += 1
-        state = Stack.pop()
-        
-        if state.check_winning():
-            print("Has solution")
-        
-        else:
-            for possible_move in state.check_possible_move():
-                new_state = RushHour(state.grid_size,possible_move)
-                if new_state in memo:
-                    pass
-                else:
-                    memo[new_state] = state
-                    Stack.append(new_state)
-        
-    return False
-
+    elapsed_time = time.time() - start_time
+    print(f"No solution found. Execution time: {elapsed_time:.4f} seconds")
+    return {
+        "message": "No solution found",
+        "iterations": iterations,
+        "solvetime": elapsed_time
+    }
