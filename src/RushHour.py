@@ -35,7 +35,7 @@ class RushHour:
     def __init__(self, grid_size, vehicles):
         self.grid_size = grid_size
         self.vehicles = vehicles  
-     # Question 2: 
+     # Question 2: the methods that display the state of the RushHour game 
     def build_grid(self, vehicles=None):
       
         if vehicles is None:
@@ -63,7 +63,7 @@ class RushHour:
             row_display = "  ".join(cell for cell in row)
             print(f"{i+1:>2} | {row_display}")
         print(separator)
-     # Question 4: check all possible move
+     # Question 4: Returns all the possible moves of a given state
     def get_possible_moves(self):
       
         possible_moves = set() #to store unique elements

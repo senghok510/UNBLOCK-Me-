@@ -53,7 +53,7 @@
 #         return RushHour(self.grid_size,self.vehicles)
     
 from src.RushHour import RushHour, Vehicle
-
+#Question 1: Check if a file is a valid input
 class Check:
 
     @classmethod
