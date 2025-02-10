@@ -55,6 +55,7 @@
 from src.RushHour import RushHour, Vehicle
 #Question 1: Check if a file is a valid input
 class Check:
+    
 
     @classmethod
     def check_file(cls, file_path):
@@ -63,17 +64,9 @@ class Check:
          
             lines = [line.strip() for line in file if line.strip()]
     
-        try:
-            grid_size = int(lines[0])
-            num_vehicles = int(lines[1])
-        except (IndexError, ValueError) as e:
-            raise ValueError("Invalid file format for grid size or number of vehicles.") from e
-
-        if len(lines) != 2 + num_vehicles:
-            raise ValueError(
-                f"Mismatch in the number of vehicles: File indicates {num_vehicles}, "
-                f"but {len(lines) - 2} vehicle descriptions are provided."
-            )
+        
+        grid_size = int(lines[0])
+        num_vehicles = int(lines[1])
         
         vehicles = []
     
@@ -108,7 +101,7 @@ class Check:
                 raise ValueError(f"Vertical vehicle {label} exceeds grid boundaries on line {line_number}.")
 
             vehicles.append(Vehicle(label, orientation, length, x_cor, y_cor))
-        
+              
         return RushHour(grid_size, vehicles)
 
    

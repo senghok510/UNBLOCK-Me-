@@ -7,7 +7,6 @@ class Vehicle:
         self.length = length
         self.x = x  
         self.y = y  
-
     def get_positions(self):
         """
         Returns all grid positions (as (x, y) tuples, 1-indexed)
@@ -18,6 +17,8 @@ class Vehicle:
              self.y + i if self.orientation == "v" else self.y)
             for i in range(self.length)
         ]
+
+   
 
     def __hash__(self):
         return hash((self.label, self.orientation, self.length, self.x, self.y))
@@ -42,7 +43,7 @@ class RushHour:
             vehicles = self.vehicles
       
         grid = [["." for _ in range(self.grid_size)] for _ in range(self.grid_size)]
-        
+    
         for vehicle in vehicles:
             for x, y in vehicle.get_positions():
                 if not (1 <= x <= self.grid_size and 1 <= y <= self.grid_size):
