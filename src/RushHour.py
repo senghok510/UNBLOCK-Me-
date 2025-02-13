@@ -52,16 +52,31 @@ class RushHour:
                     raise ValueError(f"Invalid input: Overlapping vehicles at ({x}, {y}).")
                 grid[y - 1][x - 1] = str(vehicle.label)
         return grid
+    def get_vehicle_at(self, x, y):
+        """
+        Finds the vehicle at a given (row, col) position.
+        """
+        for vehicle in self.vehicles:
+            if (x, y) in vehicle.get_positions():
+                return vehicle
+        return None
+
+    def is_occupied(self, pos):
+        """
+        Returns True if a position is occupied by a vehicle.
+        """
+        x, y = pos
+        return self.get_vehicle_at(x, y) is not None
 
     def display_grid(self):
         """Displays the current state of the grid."""
         grid = self.build_grid()
-        header = "   " + " ".join(f"{i+1:>2}" for i in range(self.grid_size))
-        separator = "   " + "---" * self.grid_size
+        header = "   " + "  ".join(f"{i+1:>2}" for i in range(self.grid_size))
+        separator = "   " + "----" * self.grid_size
         print(header)
         print(separator)
         for i, row in enumerate(grid):
-            row_display = "  ".join(cell for cell in row)
+            row_display = "   ".join(cell for cell in row)
             print(f"{i+1:>2} | {row_display}")
         print(separator)
      # Question 4: Returns all the possible moves of a given state
