@@ -1,46 +1,38 @@
-# UNBLOCK-Me-
-This project focus on the Rush Hour puzzles. The goal is the help the red car to escape the traffic and reach the exit.
-# Constraint of the cars:
-    - Horizontal cars: can be moved left or right
-    - Vertical cars : can be moved up or down
-    - One move is the displacement of one car to another eligible location
-Ex: 
-6 <- size of the grid (6x6)
-8 <- number of vehicle
-1 h 2 2 3 <- label + orientation + length + x, y of topleft car
-2 h 2 1 1
-3 h 2 5 5
-4 h 3 3 6
-5 v 3 6 1
+# UNBLOCK-Me
 
-# Brute Force approach with reconstruction solution
+This project focuses on solving **Rush Hour puzzles**. The goal is to help the red car escape the traffic and reach the exit.
 
-Firstly, we implement the Breadth-first Search to solve the game by visiting all the possible moves , when we find the solution , we reconstruct the solution.
+## Constraints of the Cars
 
-# Heuristic using the number of vehicles between the red vehicle and the exit:
-In this heuristic, we count the number of vihicles between the red vehicle and the exit each moves of the game. This approach helps us to improve the time of execution.
-
-# Heuristic by counting the number of the vehicle that block the first-blocking vehicle chainly
+- **Horizontal cars**: Can be moved left or right.
+- **Vertical cars**: Can be moved up or down.
+- **One move**: The displacement of one car to another eligible location.
 
 
-# Library, in case you haven't installed some necessary libraries , please go to the file requirements.txt and run in the terminal using:
- 'pip install -r library_name'
+---
+## Brute Force Approach with Solution Reconstruction
 
+The **Breadth-First Search (BFS)** algorithm is implemented to solve the puzzle by exploring all possible moves.  
+When a solution is found, we reconstruct the sequence of moves that led to the solution.
 
-# Here are some way to run the program
+---
 
-- The project directory is spllited into two main sections. The folder 'src' contains all the necessary classes to build the game. There is a 
-'main.py' where all the task are located.
+## Heuristics to Improve Execution Time
 
-In the 'main.py', the readers are invited to write the following line in the terminal to run a specific algorithm on a specific testing file that
-in the 'data' folder.
+### 1. **Heuristic using the number of vehicles between the red vehicle and the exit**
+- This heuristic counts the number of vehicles blocking the red car's path to the exit.
+- The fewer blocking vehicles, the better the move.
+- This approach significantly reduces execution time.
 
-In the Terminal, there are three mains algorithms: ["bfs_reconstruct", "bfs_blocking_penalty", "bfs_direct_blocking"]
+### 2. **Heuristic by counting the number of vehicles blocking the first-blocking vehicle**
+- Instead of only counting vehicles between the red car and the exit, this heuristic considers **chained blocking vehicles**.
+- The game prioritizes moves that remove the root cause of congestion.
 
-* Run a specific file: 'python main.py --algorithm algortihm_name --data_path ./data/file_name.txt'
-* Run the whole file to investigate mean execution time : 'python main.py --algorithm algorithm_name --data_path ./data/'
+---
 
-Finally, the user can see the stocked results each execution in the file 'results_log.txt'.
+## Required Libraries
 
-Enjoy testing the project :)
+If some necessary libraries are missing, install them using the `requirements.txt` file:
 
+```bash
+pip install -r requirements.txt
