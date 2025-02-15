@@ -411,10 +411,9 @@ def heuristic_nb_block(state):
 #question 10
 #greedy best-first search
 
-
-def BFS_search_with_nb_blocking_heuristic(initial_state, print_solution=True, max_iterations=100000):
+def bfs_direct_blocking(initial_state, print_solution=True, max_iterations=100000):
     """
-    A* Search (BFS with heuristic) using a blocking-based heuristic.
+    BFS with heuristic using a blocking-based heuristic.
     - Uses a `predecessors` dictionary to store parent states for backtracking.
     - Uses a priority queue to expand nodes in order of `f = g + h`.
     - `g`: Number of moves taken so far.
@@ -488,7 +487,7 @@ def BFS_search_with_nb_blocking_heuristic(initial_state, print_solution=True, ma
         for move in current_state.get_possible_moves():
             new_state = RushHour(current_state.grid_size, list(move))
             new_state_repr = str(new_state.vehicles)
-            new_cost = cost + 1  # Increment g-value
+            new_cost = cost + 1  #Increment g-value
 
             old_g = visited.get(new_state_repr, float('inf'))
             if new_cost < old_g:
@@ -507,17 +506,17 @@ def BFS_search_with_nb_blocking_heuristic(initial_state, print_solution=True, ma
 
 
 
-###heuristic distance 
-def better_heuristic_distance(state):
-    """
-    A better heuristic function that estimates how far the state is from the solution.
-    - Distance to exit for the red car.
-    - Penalizes blocking vehicles more.
-    """
-    red_car = next(v for v in state.vehicles if v.label == 1)  
-    distance_to_exit = state.grid_size - (red_car.x + red_car.length)
-    blocking_vehicles = sum(1 for v in state.vehicles if v.x > red_car.x and v.y == red_car.y)
-    return distance_to_exit + 2 * blocking_vehicles 
+# ###heuristic distance 
+# def better_heuristic_distance(state):
+#     """
+#     A better heuristic function that estimates how far the state is from the solution.
+#     - Distance to exit for the red car.
+#     - Penalizes blocking vehicles more.
+#     """
+#     red_car = next(v for v in state.vehicles if v.label == 1)  
+#     distance_to_exit = state.grid_size - (red_car.x + red_car.length)
+#     blocking_vehicles = sum(1 for v in state.vehicles if v.x > red_car.x and v.y == red_car.y)
+#     return distance_to_exit + 2 * blocking_vehicles 
 
 
 
@@ -608,10 +607,8 @@ def chain_blockage_heuristic(state):
     if not red_car:
         return 0  
 
-    
     red_car_path = get_red_vehicle_path(state, red_car)
     
-    # Identify the primary blocker
     primary_blocker = find_first_blocking_vehicle(state, red_car_path)
     if not primary_blocker:
         return 0  
@@ -649,7 +646,7 @@ def chain_penalty(state, vehicle, visited=None):
 
 
 
-def AStar_with_chain_blockage(rush_hour_game, print_solution=True, max_iterations=100000):
+def bfs_with_blocking_penalty(rush_hour_game, print_solution=True, max_iterations=100000):
     """
     - Priority queue items: (f, g, tie_breaker, current_state, path)
     - 'visited_states' keeps track of the best g so far for each state.
@@ -672,7 +669,7 @@ def AStar_with_chain_blockage(rush_hour_game, print_solution=True, max_iteration
     initial_f = initial_g + initial_h
     init_repr = str(rush_hour_game.vehicles)
 
-    #Push the initial state
+ 
     heapq.heappush(open_queue, (initial_f, initial_g, next(counter), rush_hour_game, [rush_hour_game]))
     visited_states[init_repr] = initial_g
 
@@ -731,7 +728,7 @@ def AStar_with_chain_blockage(rush_hour_game, print_solution=True, max_iteration
                 new_f = new_g + new_h
                 new_path = path + [new_state]
                 heapq.heappush(open_queue, (new_f, new_g, next(counter), new_state, new_path))
-    #Print time           
+    #Print time of execution          
     elapsed_time = time.time() - start_time
     print(f"No solution found. Execution time={elapsed_time:.4f}s")
     return "NO_SOLUTION_FOUND"
