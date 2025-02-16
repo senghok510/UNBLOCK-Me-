@@ -23,13 +23,12 @@ When a solution is found, we reconstruct the sequence of moves that led to the s
 - This approach significantly reduces execution time.
 
 ### 2. **Heuristic by counting the number of vehicles blocking the first-blocking vehicle**
-- Instead of only counting vehicles between the red car and the exit, this heuristic considers **chained blocking vehicles**.
-- The game prioritizes moves that remove the root cause of congestion.
-
+- Instead of only counting vehicles between the red vehicle and the exit, this heuristic considers **chained blocking vehicles** which penalize the vehicle recursively that block vertically 
+the first blocking vehicle that block the red vehicle.
+All the functions are located in the Algorithmes.py in src
 ---
 
 ## How to run the project
-
 
 If some necessary libraries are missing, install them using the `requirements.txt` file:
 pip install -r requirements.txt

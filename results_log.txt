@@ -80,3 +80,7 @@ All Times: [0.7411551475524902, 0.3588249683380127, 0.6164171695709229, 0.711915
 Processed Files: ./data/GameP01.txt
 Iterations: 0.2884647846221924, Time: 968.0000 seconds
 
+[2025-02-16 20:05:18.518263] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 0.25298309326171875, Time: 1072.0000 seconds
+
