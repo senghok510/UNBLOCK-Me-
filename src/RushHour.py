@@ -101,18 +101,18 @@ class RushHour:
             y_index = vehicle.y - 1
 
             if vehicle.orientation == 'v':
-                # Move up
+                # Can move up
                 if y_index > 0 and grid[y_index - 1][x_index] == ".":
                     possible_moves.add(create_new_state(vehicle, vehicle.x, vehicle.y - 1))
-                # Move down
+                # Can move down
                 bottom_index = y_index + vehicle.length - 1
                 if bottom_index < self.grid_size - 1 and grid[bottom_index + 1][x_index] == ".":
                     possible_moves.add(create_new_state(vehicle, vehicle.x, vehicle.y + 1))
             elif vehicle.orientation == 'h':
-                # Move left
+                # Can move left
                 if x_index > 0 and grid[y_index][x_index - 1] == ".":
                     possible_moves.add(create_new_state(vehicle, vehicle.x - 1, vehicle.y))
-                # Move right
+                # Can move right
                 right_index = x_index + vehicle.length - 1
                 if right_index < self.grid_size - 1 and grid[y_index][right_index + 1] == ".":
                     possible_moves.add(create_new_state(vehicle, vehicle.x + 1, vehicle.y))

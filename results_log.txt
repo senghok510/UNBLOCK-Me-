@@ -1,0 +1,82 @@
+
+[2025-02-16 14:40:12.273856] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP40.txt, ./data/GameP23.txt, ./data/GameP37.txt, ./data/GameP36.txt, ./data/GameP22.txt, ./data/GameP08.txt, ./data/GameP34.txt, ./data/GameP20.txt, ./data/GameP21.txt, ./data/GameP35.txt, ./data/GameP09.txt, ./data/GameP31.txt, ./data/GameP25.txt, ./data/GameP19.txt, ./data/GameP18.txt, ./data/GameP24.txt, ./data/GameP30.txt, ./data/GameP26.txt, ./data/GameP32.txt, ./data/GameP33.txt, ./data/GameP27.txt, ./data/GameP02.txt, ./data/GameP16.txt, ./data/GameP17.txt, ./data/GameP03.txt, ./data/GameP29.txt, ./data/GameP15.txt, ./data/GameP01.txt, ./data/GameP14.txt, ./data/GameP28.txt, ./data/GameP10.txt, ./data/GameP04.txt, ./data/GameP38.txt, ./data/GameP39.txt, ./data/GameP05.txt, ./data/GameP11.txt, ./data/GameP07.txt, ./data/GameP13.txt, ./data/GameP12.txt, ./data/GameP06.txt
+Mean Iterations: 2640.7, Mean Time: 0.7961 seconds
+All Times: [0.7409391403198242, 0.36244893074035645, 0.6145648956298828, 0.6955208778381348, 1.0352201461791992, 0.2832300662994385, 1.2536869049072266, 0.1226339340209961, 0.031031131744384766, 0.9216799736022949, 0.06609821319580078, 1.1462626457214355, 3.3194589614868164, 0.10069870948791504, 0.31313276290893555, 1.4563510417938232, 0.2888510227203369, 1.5689151287078857, 0.10933303833007812, 1.215886116027832, 0.6132280826568604, 0.5188779830932617, 0.6378390789031982, 0.6048190593719482, 0.11314892768859863, 1.437072992324829, 0.21652817726135254, 0.2027420997619629, 3.121882200241089, 0.5253560543060303, 0.4808990955352783, 0.05259990692138672, 0.7928311824798584, 1.0041909217834473, 0.6069469451904297, 0.13706588745117188, 0.6344621181488037, 3.9930009841918945, 0.11336970329284668, 0.3897969722747803]
+
+[2025-02-16 14:41:05.839847] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP40.txt, ./data/GameP23.txt, ./data/GameP37.txt, ./data/GameP36.txt, ./data/GameP22.txt, ./data/GameP08.txt, ./data/GameP34.txt, ./data/GameP20.txt, ./data/GameP21.txt, ./data/GameP35.txt, ./data/GameP09.txt, ./data/GameP31.txt, ./data/GameP25.txt, ./data/GameP19.txt, ./data/GameP18.txt, ./data/GameP24.txt, ./data/GameP30.txt, ./data/GameP26.txt, ./data/GameP32.txt, ./data/GameP33.txt, ./data/GameP27.txt, ./data/GameP02.txt, ./data/GameP16.txt, ./data/GameP17.txt, ./data/GameP03.txt, ./data/GameP29.txt, ./data/GameP15.txt, ./data/GameP01.txt, ./data/GameP14.txt, ./data/GameP28.txt, ./data/GameP10.txt, ./data/GameP04.txt, ./data/GameP38.txt, ./data/GameP39.txt, ./data/GameP05.txt, ./data/GameP11.txt, ./data/GameP07.txt, ./data/GameP13.txt, ./data/GameP12.txt, ./data/GameP06.txt
+Mean Iterations: 2866.925, Mean Time: 0.8297 seconds
+All Times: [1.0186271667480469, 0.5329599380493164, 0.6010401248931885, 0.6892189979553223, 1.4169647693634033, 0.30551600456237793, 1.2335381507873535, 0.3397541046142578, 0.03182387351989746, 0.9476709365844727, 0.1494579315185547, 0.9896020889282227, 3.1260926723480225, 0.0782780647277832, 0.30557894706726074, 1.1276919841766357, 0.23642897605895996, 1.4444999694824219, 0.11500811576843262, 1.0667998790740967, 0.5945370197296143, 0.7000100612640381, 0.701287031173706, 0.6319398880004883, 0.11051511764526367, 1.2504301071166992, 0.14154505729675293, 0.24091434478759766, 4.035065174102783, 0.5977082252502441, 0.6082460880279541, 0.06054806709289551, 0.8935937881469727, 0.9615011215209961, 0.7230331897735596, 0.13870906829833984, 0.812114953994751, 3.5653510093688965, 0.14297699928283691, 0.5197129249572754]
+
+[2025-02-16 14:41:56.257184] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP40.txt, ./data/GameP23.txt, ./data/GameP37.txt, ./data/GameP36.txt, ./data/GameP22.txt, ./data/GameP08.txt, ./data/GameP34.txt, ./data/GameP20.txt, ./data/GameP21.txt, ./data/GameP35.txt, ./data/GameP09.txt, ./data/GameP31.txt, ./data/GameP25.txt, ./data/GameP19.txt, ./data/GameP18.txt, ./data/GameP24.txt, ./data/GameP30.txt, ./data/GameP26.txt, ./data/GameP32.txt, ./data/GameP33.txt, ./data/GameP27.txt, ./data/GameP02.txt, ./data/GameP16.txt, ./data/GameP17.txt, ./data/GameP03.txt, ./data/GameP29.txt, ./data/GameP15.txt, ./data/GameP01.txt, ./data/GameP14.txt, ./data/GameP28.txt, ./data/GameP10.txt, ./data/GameP04.txt, ./data/GameP38.txt, ./data/GameP39.txt, ./data/GameP05.txt, ./data/GameP11.txt, ./data/GameP07.txt, ./data/GameP13.txt, ./data/GameP12.txt, ./data/GameP06.txt
+Mean Iterations: 3070.775, Mean Time: 0.7372 seconds
+All Times: [0.8582329750061035, 0.44194912910461426, 0.5098140239715576, 0.6351916790008545, 1.2364368438720703, 0.23849916458129883, 1.0277388095855713, 0.39882922172546387, 0.022562026977539062, 0.771953821182251, 0.1502079963684082, 0.784337043762207, 2.712707042694092, 0.06337594985961914, 0.2474370002746582, 0.9532740116119385, 0.19310903549194336, 1.205176830291748, 0.09523200988769531, 0.952850341796875, 0.4771249294281006, 0.7378811836242676, 0.6075248718261719, 0.5181539058685303, 0.0840909481048584, 1.060884952545166, 0.11823105812072754, 0.17418861389160156, 4.222298860549927, 0.49891209602355957, 0.5152440071105957, 0.045787811279296875, 0.7359538078308105, 0.7903330326080322, 0.6334068775177002, 0.10458064079284668, 0.9594082832336426, 3.0951950550079346, 0.13898205757141113, 0.472017765045166]
+
+[2025-02-16 19:09:31.850623] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP40.txt, ./data/GameP23.txt, ./data/GameP37.txt, ./data/GameP36.txt, ./data/GameP22.txt, ./data/GameP08.txt, ./data/GameP34.txt, ./data/GameP20.txt, ./data/GameP21.txt, ./data/GameP35.txt, ./data/GameP09.txt, ./data/GameP31.txt, ./data/GameP25.txt, ./data/GameP19.txt, ./data/GameP18.txt, ./data/GameP24.txt, ./data/GameP30.txt, ./data/GameP26.txt, ./data/GameP32.txt, ./data/GameP33.txt, ./data/GameP27.txt, ./data/GameP02.txt, ./data/GameP16.txt, ./data/GameP17.txt, ./data/GameP03.txt, ./data/GameP29.txt, ./data/GameP15.txt, ./data/GameP01.txt, ./data/GameP14.txt, ./data/GameP28.txt, ./data/GameP10.txt, ./data/GameP04.txt, ./data/GameP38.txt, ./data/GameP39.txt, ./data/GameP05.txt, ./data/GameP11.txt, ./data/GameP07.txt, ./data/GameP13.txt, ./data/GameP12.txt, ./data/GameP06.txt
+Mean Iterations: 2866.2, Mean Time: 0.8373 seconds
+All Times: [1.0219440460205078, 0.536034107208252, 0.6095468997955322, 0.7066140174865723, 1.4315650463104248, 0.3097219467163086, 1.2629101276397705, 0.3452150821685791, 0.031707763671875, 0.9739549160003662, 0.15485692024230957, 1.0387399196624756, 3.192228078842163, 0.08002209663391113, 0.33483004570007324, 1.1219887733459473, 0.23941707611083984, 1.4609088897705078, 0.11469006538391113, 1.0685539245605469, 0.5981810092926025, 0.6779320240020752, 0.7056093215942383, 0.639415979385376, 0.11108088493347168, 1.2572298049926758, 0.14174175262451172, 0.21649909019470215, 4.054180860519409, 0.600165843963623, 0.5709760189056396, 0.05974102020263672, 0.8977899551391602, 0.9553372859954834, 0.7311339378356934, 0.13966798782348633, 0.8189818859100342, 3.582731008529663, 0.1444089412689209, 0.5522170066833496]
+
+[2025-02-16 19:12:30.368935] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP01.txt
+Iterations: 0.3110060691833496, Time: 0.3110 seconds
+
+[2025-02-16 19:13:14.429727] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2519993782043457, Time: 0.2520 seconds
+
+[2025-02-16 19:13:17.200987] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 0.26018524169921875, Time: 0.2602 seconds
+
+[2025-02-16 19:13:19.313168] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2499988079071045, Time: 0.2500 seconds
+
+[2025-02-16 19:13:20.960750] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2527139186859131, Time: 0.2527 seconds
+
+[2025-02-16 19:15:00.415183] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2441880702972412, Time: 1072.0000 seconds
+
+[2025-02-16 19:15:20.099644] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP01.txt
+Iterations: 0.3101818561553955, Time: 1069.0000 seconds
+
+[2025-02-16 19:17:59.624851] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP01.txt
+Iterations: 0.26236391067504883, Time: 1066.0000 seconds
+
+[2025-02-16 19:18:11.529154] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2676858901977539, Time: 970.0000 seconds
+
+[2025-02-16 19:18:13.757454] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP01.txt
+Iterations: 0.27305078506469727, Time: 968.0000 seconds
+
+[2025-02-16 19:18:14.855182] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2617199420928955, Time: 969.0000 seconds
+
+[2025-02-16 19:18:15.743714] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2712578773498535, Time: 970.0000 seconds
+
+[2025-02-16 19:18:16.427447] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP01.txt
+Iterations: 0.29326295852661133, Time: 969.0000 seconds
+
+[2025-02-16 19:57:54.929752] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP40.txt, ./data/GameP23.txt, ./data/GameP37.txt, ./data/GameP36.txt, ./data/GameP22.txt, ./data/GameP08.txt, ./data/GameP34.txt, ./data/GameP20.txt, ./data/GameP21.txt, ./data/GameP35.txt, ./data/GameP09.txt, ./data/GameP31.txt, ./data/GameP25.txt, ./data/GameP19.txt, ./data/GameP18.txt, ./data/GameP24.txt, ./data/GameP30.txt, ./data/GameP26.txt, ./data/GameP32.txt, ./data/GameP33.txt, ./data/GameP27.txt, ./data/GameP02.txt, ./data/GameP16.txt, ./data/GameP17.txt, ./data/GameP03.txt, ./data/GameP29.txt, ./data/GameP15.txt, ./data/GameP01.txt, ./data/GameP14.txt, ./data/GameP28.txt, ./data/GameP10.txt, ./data/GameP04.txt, ./data/GameP38.txt, ./data/GameP39.txt, ./data/GameP05.txt, ./data/GameP11.txt, ./data/GameP07.txt, ./data/GameP13.txt, ./data/GameP12.txt, ./data/GameP06.txt
+Mean Iterations: 2639.45, Mean Time: 0.7956 seconds
+All Times: [0.7411551475524902, 0.3588249683380127, 0.6164171695709229, 0.7119150161743164, 1.041788101196289, 0.2824733257293701, 1.2353971004486084, 0.12156987190246582, 0.031270742416381836, 0.9240949153900146, 0.06275320053100586, 1.1401307582855225, 3.355562210083008, 0.10333609580993652, 0.3109769821166992, 1.4705779552459717, 0.2906062602996826, 1.5467679500579834, 0.10869407653808594, 1.228600263595581, 0.6051247119903564, 0.5083448886871338, 0.627011775970459, 0.6066927909851074, 0.11350226402282715, 1.4354610443115234, 0.21292996406555176, 0.20098209381103516, 3.1000709533691406, 0.5086550712585449, 0.4682431221008301, 0.05172991752624512, 0.7816669940948486, 1.0416269302368164, 0.6225440502166748, 0.13625311851501465, 0.6417548656463623, 3.9781229496002197, 0.11304497718811035, 0.3855569362640381]
+
+[2025-02-16 19:59:14.987531] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP01.txt
+Iterations: 0.2884647846221924, Time: 968.0000 seconds
+

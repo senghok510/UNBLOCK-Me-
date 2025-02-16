@@ -8,13 +8,11 @@ This project focuses on solving **Rush Hour puzzles**. The goal is to help the r
 - **Vertical cars**: Can be moved up or down.
 - **One move**: The displacement of one car to another eligible location.
 
-
 ---
 ## Brute Force Approach with Solution Reconstruction
 
 The **Breadth-First Search (BFS)** algorithm is implemented to solve the puzzle by exploring all possible moves.  
 When a solution is found, we reconstruct the sequence of moves that led to the solution.
-
 ---
 
 ## Heuristics to Improve Execution Time
@@ -33,8 +31,6 @@ When a solution is found, we reconstruct the sequence of moves that led to the s
 ## How to run the project
 
 
-
-```bash
 If some necessary libraries are missing, install them using the `requirements.txt` file:
 pip install -r requirements.txt
 
@@ -43,21 +39,26 @@ pip install -r requirements.txt
 
 The project directory is split into two main sections:
 
-- **`src/` folder** — contains all the classes needed to build the game.  
+- **`src/` folder** — contains all the classes needed to build the game and the three algorithms 
 - **`main.py`** — the main execution script.
 
 ## Running Algorithms
 
-To run a **specific algorithm** on a **single test file**:
+To run a **specific algorithm** on a **single test file**
+Put the following command in the terminal:
+'python main.py --algorithm algorithm_name --data_path ./data/file_name.txt'
 
-```bash
-python main.py --algorithm algorithm_name --data_path ./data/file_name.txt
+To Run All Test Files and Calculate Mean Execution Time
+Put the following command in the terminal:
 
+'python main.py --algorithm algorithm_name --data_path ./data/'
 
-## To Run All Test Files and Calculate Mean Execution Time
+- algorithm_name is to be chosen from:
+["bfs_reconstruct", "bfs_blocking_penalty", "bfs_direct_blocking"]
+- for example if one want to run a specific file  : 
+'python main.py --algorithm bfs_reconstruct --data_path ./data/GameP01.txt'
+or 'python main.py --algorithm bfs_reconstruct --data_path ./data/' to run on all the files inside the data folder.
 
-```bash
-python main.py --algorithm algorithm_name --data_path ./data/
 
 ## Checking Results
 

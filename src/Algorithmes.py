@@ -5,209 +5,9 @@ from src.Check import Check
 from collections import deque
 import heapq
 import itertools
-# #random walk
-# def random(rush_hour_game, max_iterations=100000):
-   
-#     start_time = time.time()
-#     current_state = rush_hour_game
-    
-#     explored_states = set()
-#     # holds the sequence of states visited so we can backtrack.
-#     path = [current_state]
-#     iterations = 0
-
-#     while iterations < max_iterations:
-#         iterations += 1
-
-#         if current_state.check_winning():
-#             return {
-#                 "solution": path,
-#                 "solvetime": time.time() - start_time,
-#                 "iterations": iterations
-#             }
-        
-#         possible_moves = current_state.get_possible_moves()
-#         movable = []
-#         for move in possible_moves:
-#             move_key = tuple(move)
-#             if move_key not in explored_states:
-#                 movable.append(move)    
-                
-                        
-#         if not movable:
-#             if len(path)>1:
-#                 path.pop()
-#                 current_state = path[-1]  
-#                 continue
-#             else:
-#                 break  
-        
-#         move = random.choice(movable) 
-#         new_state = RushHour(current_state.grid_size, list(move))
-        
-#         explored_states.add(tuple(new_state.vehicles))
-     
-    
-#         print(f"\nIteration {iterations}: New state chosen")
-#         new_state.display_grid()
-        
-#         path.append(new_state)
-#         current_state = new_state
-
-#     return {
-#         "message": "No solution found",
-#         "iterations": iterations,
-#         "solvetime": time.time() - start_time
-#     }
 
 
-
-
-# def dfs(rush_hour_game, max_iterations=100000, debug=False, print_solution=True):
-#     """
-#     Performs a Depth-First Search (DFS) to solve the RushHour game.
-#     """
-#     start_time = time.time()
-#     initial_key = tuple(rush_hour_game.vehicles)
-
-#     stack = [rush_hour_game]
-
-#     predecessors = {initial_key: None}
-   
-#     state_instances = {initial_key: rush_hour_game}
-    
-#     iterations = 0
-
-#     while stack:
-#         current_state = stack.pop()
-#         iterations += 1
-#         current_key = tuple(current_state.vehicles)
-
-#         if debug:
-#             print(f"Iteration {iterations}: Stack size = {len(stack)}, Visited states = {len(predecessors)}")
-
-#         if current_state.check_winning():
-         
-#             solution_path = []
-#             key = current_key
-#             while key is not None:
-#                 solution_path.append(state_instances[key])
-#                 key = predecessors[key]
-#             solution_path.reverse()
-#             elapsed_time = time.time() - start_time
-#             print(f"\nSolution found in {iterations} iterations, execution time: {elapsed_time:.4f} seconds")
-            
-#             if print_solution:
-#                 print("\n--- Solution Path ---")
-#                 for step, state in enumerate(solution_path):
-#                     print(f"\nStep {step}:")
-#                     state.display_grid()
-            
-#             return {
-#                 "solution": solution_path,
-#                 "iterations": iterations,
-#                 "solvetime": elapsed_time
-#             }
-
-#         if iterations > max_iterations:
-#             elapsed_time = time.time() - start_time
-#             print(f"Max iterations reached ({iterations}). Execution time: {elapsed_time:.4f} seconds")
-#             return {
-#                 "message": "Max iterations reached. No solution found.",
-#                 "iterations": iterations,
-#                 "solvetime": elapsed_time
-#             }
-
-   
-#         for move in current_state.get_possible_moves():
-#             new_state = RushHour(current_state.grid_size, list(move))
-#             new_key = tuple(new_state.vehicles)
-#             if new_key not in predecessors:
-#                 predecessors[new_key] = current_key  
-#                 state_instances[new_key] = new_state
-#                 stack.append(new_state)
-
-#     elapsed_time = time.time() - start_time
-#     print(f"No solution found. Execution time: {elapsed_time:.4f} seconds")
-#     return {
-#         "message": "No solution found",
-#         "iterations": iterations,
-#         "solvetime": elapsed_time
-#     }
-    
-# def DFS_using_Heuristic(rush_hour_game, max_iterations=100000, debug=False, print_solution=True):
-#     start_time = time.time()
-#     initial_key = tuple(rush_hour_game.vehicles)
-
-#     stack = [rush_hour_game]
-
-#     predecessors = {initial_key: None}
-#     state_instances = {initial_key: rush_hour_game}
-
-#     iterations = 0
-
-#     while stack:
-#         current_state = stack.pop()  # Now this will always be a RushHour object
-#         iterations += 1
-#         current_key = tuple(current_state.vehicles)
-
-#         if debug:
-#             print(f"Iteration {iterations}: Stack size = {len(stack)}, Visited states = {len(predecessors)}")
-
-#         if current_state.check_winning():
-#             solution_path = []
-#             key = current_key
-#             while key is not None:
-#                 solution_path.append(state_instances[key])
-#                 key = predecessors[key]
-#             solution_path.reverse()
-            
-#             elapsed_time = time.time() - start_time
-#             print(f"\nSolution found in {iterations} iterations, execution time: {elapsed_time:.4f} seconds")
-            
-#             if print_solution:
-#                 print("\n--- Solution Path ---")
-#                 for step, state in enumerate(solution_path):
-#                     print(f"\nStep {step}:")
-#                     state.display_grid()
-            
-#             return {
-#                 "solution": solution_path,
-#                 "iterations": iterations,
-#                 "solvetime": elapsed_time
-#             }
-
-#         if iterations > max_iterations:
-#             elapsed_time = time.time() - start_time
-#             print(f"Max iterations reached ({iterations}). Execution time: {elapsed_time:.4f} seconds")
-#             return {
-#                 "message": "Max iterations reached. No solution found.",
-#                 "iterations": iterations,
-#                 "solvetime": elapsed_time
-#             }
-
-#         possible_moves = current_state.get_possible_moves()
-#         sorted_moves = sorted(possible_moves, key=lambda move: heuristic_nb_block(RushHour(current_state.grid_size, list(move))))
-
-#         for move in sorted_moves:
-#             new_state = RushHour(current_state.grid_size, list(move))
-#             new_key = tuple(new_state.vehicles)
-#             #check for visited state
-#             if new_key not in predecessors:  
-#                 predecessors[new_key] = current_key  
-#                 state_instances[new_key] = new_state
-#                 stack.append(new_state)  # Corrected: Push only new_state
-
-#     elapsed_time = time.time() - start_time
-#     print(f"No solution found. Execution time: {elapsed_time:.4f} seconds")
-#     return {
-#         "message": "No solution found",
-#         "iterations": iterations,
-#         "solvetime": elapsed_time
-#     }
-
-
-#Question 3: Describe the brute-force algorithm and its implementation
+#Question 3: Implementation of the bruteforce algorithm using the implementation choice described in the report
 def bfs(rush_hour_game, max_iterations=100000, debug=False, print_solution=True):
     """
     Breadth-First Search (BFS) to find the shortest solution for Rush Hour.
@@ -219,7 +19,7 @@ def bfs(rush_hour_game, max_iterations=100000, debug=False, print_solution=True)
 
     queue = deque()
     queue.append((initial_state, [initial_state]))  
-
+    #to store the visited state to avoid replications
     visited = set()
     visited.add(initial_key)
     
@@ -250,7 +50,7 @@ def bfs(rush_hour_game, max_iterations=100000, debug=False, print_solution=True)
                 "solvetime": elapsed_time
             }
 
-    
+        # to prevent overFlow error
         if iterations > max_iterations:
             elapsed_time = time.time() - start_time
             return {
@@ -269,7 +69,7 @@ def bfs(rush_hour_game, max_iterations=100000, debug=False, print_solution=True)
                 visited.add(new_key)
                 new_path = path + [new_state]
                 queue.append((new_state, new_path))
-
+    #measured time execution
     elapsed_time = time.time() - start_time
     return {
         "message": "No solution found",
@@ -277,8 +77,7 @@ def bfs(rush_hour_game, max_iterations=100000, debug=False, print_solution=True)
         "solvetime": elapsed_time
     }
 
-#Question 7:
-
+#Question 7: add some lines code from the bfs function to give the reconstruction path of the solution.
 def reconstruct_path(predecessors, final_state):
     """
     Reconstructs the solution path from the winning state back to the initial state.
@@ -341,7 +140,7 @@ def bfs_reconstruct_solution(rush_hour_game, max_iterations=100000, debug=False,
                 "iterations": iterations,
                 "solvetime": elapsed_time
             }
-
+        #to prevent Overflow
         if iterations > max_iterations:
             elapsed_time = time.time() - start_time
             return {
@@ -359,7 +158,7 @@ def bfs_reconstruct_solution(rush_hour_game, max_iterations=100000, debug=False,
                 visited.add(new_key)
                 queue.append(new_state)
                 predecessors[new_key] = current_state  
-
+    #time of execution
     elapsed_time = time.time() - start_time
     return {
         "message": "No solution found",
@@ -369,7 +168,7 @@ def bfs_reconstruct_solution(rush_hour_game, max_iterations=100000, debug=False,
 
 
 
-#Question 8
+#Question 8: the heuristic given by the subject using the number of vehicles between the red vehicle and the exit
 def heuristic_nb_block(state):
     """
     A heuristic function that estimates how far the state is from the solution.
@@ -409,11 +208,11 @@ def heuristic_nb_block(state):
 
 
 #question 10
-#greedy best-first search
 
+# Heuristic : The number of blocking vehicle between the red vechicle and the exit
 def bfs_direct_blocking(initial_state, print_solution=True, max_iterations=100000):
     """
-    BFS with heuristic using a blocking-based heuristic.
+    BFS with heuristic using a number of blocking vehicles heuristic.
     - Uses a `predecessors` dictionary to store parent states for backtracking.
     - Uses a priority queue to expand nodes in order of `f = g + h`.
     - `g`: Number of moves taken so far.
@@ -455,7 +254,7 @@ def bfs_direct_blocking(initial_state, print_solution=True, max_iterations=10000
         f, cost, _, current_state = heapq.heappop(open_queue)
         current_state.display_grid()  
         
-      
+        #If winning is reached, print the results 
         if current_state.check_winning():
             elapsed_time = time.time() - start_time
             solution_path = reconstruct_path(predecessors, current_state)
@@ -474,7 +273,7 @@ def bfs_direct_blocking(initial_state, print_solution=True, max_iterations=10000
                 "iterations": iterations,
                 "solvetime": elapsed_time
             }
-        
+        # prevent Overflow
         if iterations > max_iterations:
             elapsed_time = time.time() - start_time
             print(f"\nMax iterations ({max_iterations}) reached. No solution found.")
@@ -483,7 +282,7 @@ def bfs_direct_blocking(initial_state, print_solution=True, max_iterations=10000
                 "iterations": iterations,
                 "solvetime": elapsed_time
             }
-
+        # check for possible moves out of the current move to continue searching
         for move in current_state.get_possible_moves():
             new_state = RushHour(current_state.grid_size, list(move))
             new_state_repr = str(new_state.vehicles)
@@ -506,20 +305,6 @@ def bfs_direct_blocking(initial_state, print_solution=True, max_iterations=10000
 
 
 
-# ###heuristic distance 
-# def better_heuristic_distance(state):
-#     """
-#     A better heuristic function that estimates how far the state is from the solution.
-#     - Distance to exit for the red car.
-#     - Penalizes blocking vehicles more.
-#     """
-#     red_car = next(v for v in state.vehicles if v.label == 1)  
-#     distance_to_exit = state.grid_size - (red_car.x + red_car.length)
-#     blocking_vehicles = sum(1 for v in state.vehicles if v.x > red_car.x and v.y == red_car.y)
-#     return distance_to_exit + 2 * blocking_vehicles 
-
-
-
 
 
 
@@ -527,7 +312,7 @@ def bfs_direct_blocking(initial_state, print_solution=True, max_iterations=10000
 
 
 ### heuristic blockage penalty
-
+#This function give the coordinate of the cell between the red car and the exit
 def get_red_vehicle_path(state, red_vehicle):
     """
     Returns the list of positions that the red car needs to move to exit.
@@ -538,7 +323,7 @@ def get_red_vehicle_path(state, red_vehicle):
         path.append((i, red_vehicle.y)) 
     return path
 
-
+#This function give the vehicle that directly block the red car, the car must be verticle
 def find_first_blocking_vehicle(state, red_vehicle_path):
     """
     Finds the first vehicle that directly blocks the red vehicle's path.
@@ -556,8 +341,7 @@ def find_first_blocking_vehicle(state, red_vehicle_path):
 
 
 
-
-
+#Find the positions that block the vehicle from above or below
 def get_blocked_positions(state, vehicle, direction):
     """
     Returns the positions that the vertical car would occupy if it moves up/down,
@@ -579,7 +363,7 @@ def get_blocked_positions(state, vehicle, direction):
                 break 
 
     return blocked_positions
-
+# Find the vehicles that block the vehicle(parameter) form above or below. This function is the same as get_blocked_positions but different outputs.
 def get_blockers(state, vehicle):
     """
     Returns a list (or set) of vehicles that block 'vehicle'
@@ -595,6 +379,7 @@ def get_blockers(state, vehicle):
                 blockers.add(occupant)
     return blockers
 
+# This function calculate the heuristic recursively taking into account the blocking constraint of the first car directly blocking the red car.
 def chain_blockage_heuristic(state):
     """
     A multi-layered (chain) blockage heuristic:
@@ -645,7 +430,7 @@ def chain_penalty(state, vehicle, visited=None):
     return penalty
 
 
-
+#Question 11: our bfs algorithm using chain_blockage_heuristic
 def bfs_with_blocking_penalty(rush_hour_game, print_solution=True, max_iterations=100000):
     """
     - Priority queue items: (f, g, tie_breaker, current_state, path)
@@ -732,5 +517,3 @@ def bfs_with_blocking_penalty(rush_hour_game, print_solution=True, max_iteration
     elapsed_time = time.time() - start_time
     print(f"No solution found. Execution time={elapsed_time:.4f}s")
     return "NO_SOLUTION_FOUND"
-
-
