@@ -108,3 +108,15 @@ Iterations: 3027, Time: 0.8617 seconds
 Processed Files: ./data/GameP40.txt
 Iterations: 2196, Time: 0.7463 seconds
 
+[2025-02-16 21:35:10.620374] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 1072, Time: 0.2363 seconds
+
+[2025-02-16 21:35:26.940815] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP01.txt
+Iterations: 1069, Time: 0.3380 seconds
+
+[2025-02-16 21:35:39.023087] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP01.txt
+Iterations: 969, Time: 0.2763 seconds
+
