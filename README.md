@@ -30,11 +30,12 @@ When a solution is found, we reconstruct the sequence of moves that led to the s
 
 ---
 
-## Required Libraries
+## How to run the project
 
-If some necessary libraries are missing, install them using the `requirements.txt` file:
+
 
 ```bash
+If some necessary libraries are missing, install them using the `requirements.txt` file:
 pip install -r requirements.txt
 
 
