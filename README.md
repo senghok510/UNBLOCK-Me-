@@ -36,3 +36,34 @@ If some necessary libraries are missing, install them using the `requirements.tx
 
 ```bash
 pip install -r requirements.txt
+
+
+# How to Run the Program
+
+The project directory is split into two main sections:
+
+- **`src/` folder** — contains all the classes needed to build the game.  
+- **`main.py`** — the main execution script.
+
+## Running Algorithms
+
+To run a **specific algorithm** on a **single test file**:
+
+```bash
+python main.py --algorithm algorithm_name --data_path ./data/file_name.txt
+
+
+## To Run All Test Files and Calculate Mean Execution Time
+
+```bash
+python main.py --algorithm algorithm_name --data_path ./data/
+
+## Checking Results
+
+All runs log their results in **`results_log.txt`**.
+
+---
+
+## Enjoy Testing the Project!
+
+Feel free to experiment with different heuristics and approaches to see how they affect both speed and solution quality.
