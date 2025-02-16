@@ -84,3 +84,27 @@ Iterations: 0.2884647846221924, Time: 968.0000 seconds
 Processed Files: ./data/GameP01.txt
 Iterations: 0.25298309326171875, Time: 1072.0000 seconds
 
+[2025-02-16 21:09:33.593664] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP01.txt
+Iterations: 0.23673415184020996, Time: 1072.0000 seconds
+
+[2025-02-16 21:09:56.513722] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP40.txt
+Iterations: 1.0352680683135986, Time: 2977.0000 seconds
+
+[2025-02-16 21:11:45.799168] Algorithm: bfs_direct_blocking
+Processed Files: ./data/GameP40.txt
+Iterations: 2982, Time: 1.0179 seconds
+
+[2025-02-16 21:12:12.673967] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP40.txt
+Iterations: 0.8323891162872314, Time: 3022.0000 seconds
+
+[2025-02-16 21:12:37.262997] Algorithm: bfs_reconstruct
+Processed Files: ./data/GameP40.txt
+Iterations: 3027, Time: 0.8617 seconds
+
+[2025-02-16 21:13:42.548017] Algorithm: bfs_blocking_penalty
+Processed Files: ./data/GameP40.txt
+Iterations: 2196, Time: 0.7463 seconds
+

@@ -29,7 +29,7 @@ def run_bfs_reconstruct_solution(files):
         print("\nSearching for a solution using bfs_direct_blocking...\n")
         result = Al.bfs_reconstruct_solution(game, print_solution=True)
         print("\nSolution found!" if "solution" in result else "\nNo solution found.")
-        return result.get("iterations"), result.get("solvetime") 
+        return  result.get("solvetime"),result.get("iterations")
     else:  
         
         times, num_iterations = [], []
@@ -52,7 +52,7 @@ def run_bfs_blocking_penalty(files):
         print("\nSearching for a solution using bfs_direct_blocking...\n")
         result = Al.bfs_with_blocking_penalty(game, print_solution=True)
         print("\nSolution found!" if "solution" in result else "\nNo solution found.")
-        return result.get("iterations"), result.get("solvetime") 
+        return result.get("solvetime"),result.get("iterations") 
     times, num_iterations = [], []
     for file in files:
         game = Check.check_file(file)
@@ -75,7 +75,7 @@ def run_bfs_direct_blocking(files):
         print("\nSearching for a solution using bfs_direct_blocking...\n")
         result = Al.bfs_direct_blocking(game, print_solution=True)
         print("\nSolution found!" if "solution" in result else "\nNo solution found.")
-        return result.get("iterations"), result.get("solvetime") 
+        return result.get("solvetime"), result.get("iterations") 
     else:
         times, num_iterations = [], []
         for file in files:
